@@ -1,0 +1,1 @@
+console.log(livro[propriedade3]) // Saída: 1937

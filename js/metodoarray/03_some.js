@@ -1,0 +1,26 @@
+// const produtos = [
+//     {nome: "Mouse", preco: 50, promocao: false},
+//     {nome: "Teclado", preco: 120, promocao: true},
+//     {nome: "Monitor", preco: 850, promocao: false}
+// ];
+
+// // Verifica se existe pelo menos um produto em promoção
+// const existePromocao = produtos.some(produto => {
+//     return produto.promocao === true;
+// });
+
+// console.log("Existe promocao?", existePromocao);
+
+// Exemplo 3 - Verificar se existe usuário administrador
+const usuario = [
+    {nome: "Ana", perfil: "usuario"},
+    {nome: "Carlos", perfil: "usuario"},
+    {nome: "Marina", perfil: "adminstrador"}
+];
+
+const existePerfil = usuario.some(usuario => {
+    return usuario.perfil === "administrador";
+});
+
+console.log(existePerfil); // true
+
