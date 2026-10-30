@@ -52,9 +52,10 @@ while(true) {
     console.log("7 - QUANTIDADE TOTAL DE PÁGINAS DO CATAGOLO");
     console.log("8 - ORDENAR LIVRO PELO ANO DE PUBLICACAO");
     console.log("9 - GERAÇÃO DE RELATORIO COMPLETO");
-    console.log("10 - SAIR DO SISTEMA");
+    console.log("10 - EMPRESTAR LIVRO");
+    console.log("11 - SAIR DO SISTEMA");
     let opcao = Number(readline.question("Escolha uma opcao acima de 1 a 10: "));
-    if (opcao === 10) {
+    if (opcao === 11) {
         console.log("Sistema encerrado");
         break;
     }
@@ -103,21 +104,11 @@ while(true) {
         case 4:
             const livroInexistente = livros.some(livro => {
                 return livro.disponivel === false;
-                console.log(`Livros indisponiveis: `);
-                livros.forEach(livro => {
-                    console.log(`${livro.titulo}`);
-                })
             });
 
             if (livroInexistente) {
                 console.log("Existe livro que está indisponivel no momento");
-                let escolha = readline.question("Deseja visualiar o livro que esta indisponivel, digite sim ou nao: ");
-                if (escolha === "sim" ) {
-                    console.log("");
-                    
-                }
             }
-            break;
 
         case 5:
             const livroExistente = livros.every(livro => {
@@ -180,5 +171,25 @@ while(true) {
             })
             break;
             
+        case 10:
+            let livroEmprestimo = readline.question("Digite o titulo do livro que deseja emprestar: ");
+    
+        // 1. Localiza o objeto do livro no array pelo título
+        let livroEncontrado = livros.find(livro => livro.titulo.toLowerCase() === livroEmprestimo.toLowerCase());
+
+        // 2. Verifica se o livro existe e se está disponível
+        if (livroEncontrado) {
+            if (livroEncontrado.disponivel === true) {
+                // 3. Altera a propriedade para false (emprestado)
+                livroEncontrado.disponivel = false;
+                console.log(`Sucesso! O livro "${livroEncontrado.titulo}" foi emprestado.`);
+            } else {
+                console.log(`O livro "${livroEncontrado.titulo}" já se encontra emprestado.`);
+            }
+        } else {
+            console.log("Livro não encontrado no catálogo.");
+        }
+        break;
+   
     }
 }
