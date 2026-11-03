@@ -32,7 +32,7 @@ function cadastrarLivros() {
         let tituloLivro = question("Digite o titulo do livro: ").trim().toLowerCase();
         let autorLivro = question("Informe o autor do livro: ").trim().toLowerCase();
         let categoriaLivro = question("Informe a categoria do livro: ").trim().toLowerCase();
-        let disponivelLivro = question("Informe a disponibilidade do livro (true/false): ").trim().toLowerCase();
+        let disponivelLivro = Boolean(question("Informe a disponibilidade do livro (true/false): ")) === true;
 
         if (disponivelLivro === true) {
             disponivelLivro = true
@@ -186,5 +186,8 @@ while (true) {
         case 6:
             listarLivrosEmprestados();
             break;
+
+        default:
+            console.log('Informacao invalida');
     }
 }

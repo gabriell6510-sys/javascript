@@ -77,7 +77,7 @@ while (true) {
     console.log("9 - REDUCE: para contar quantas consultas foram realizadas.");
     console.log("10 - SORT: para ordenar consultas pelo nome do animal.");
     console.log("11 - Gerar um relatório por veterinário utilizando forEach().");
-    console.log("11 - Sair do sistema");
+    console.log("12 - Sair do sistema");
     let opcao = Number(question("Digite uma das opcoes acima"));
     if (opcao === 12) {
         console.log("Fim do sistema");
@@ -128,5 +128,49 @@ while (true) {
                 console.log("Nao tem nenhuma consulta pendente");
             }
             break;
+
+        case 4:
+            const filtrarConsultaAnimais = consultas.filter(consulta => {
+                return consulta.especie;
+            });
+
+            if (filtrarConsultaAnimais) {
+                filtrarConsultaAnimais.forEach(consulta => {
+                console.log(`Consulta do animal ${consulta.animal} (${consulta.especie}), tutor(a) ${consulta.tutor}, com o(a) veterinário(a) ${consulta.veterinario}.`);
+            });
+            } else {
+                console.log("Nao tem nenhuma consulta pendente");
+            }
+            break;
+
+        case 5:
+            const consultaPendente = consultas.filter(consulta => {
+                return consulta.realizada === false;
+            });
+
+            if (consultaPendente) {
+                consultaPendente.forEach(consulta => {
+                console.log(`Nome da consulta pendente: ${consulta.procedimento}, o responsavel pela consulta e o(a) ${consulta.veterinario}`);
+            });
+            } else {
+                console.log("Nao tem nenhuma consulta pendente");
+            }
+            break;
+
+        case 6:
+            const gerarRelacaoAnimalTutorProcedimento = consultas.map(consulta => {
+                return {
+                    nomeAnimal: consulta.animal,
+                    tutor: consulta.tutor,
+                    procedimento: consulta.procedimento
+                }
+            });
+
+            if (gerarRelacaoAnimalTutorProcedimento) {
+                gerarRelacaoAnimalTutorProcedimento.forEach(consulta => {
+                    console.log(`A consulta do animal ${consulta.nomeAnimal} da especie ${consulta.tutor} e o procedimento vai ser ${consulta.procedimento}`);
+                    
+                })
+            }
     }
 }
