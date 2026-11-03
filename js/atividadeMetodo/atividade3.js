@@ -103,15 +103,29 @@ while (true) {
 
         case 2:
             const filtrarConsultaVeterinario = consultas.filter(consulta => {
-                return consulta.realizada === true;
+                return consulta.veterinario;
             });
 
             if (filtrarConsultaVeterinario) {
-                filtrarConsultaVeterinario.forEach(consultas => {
-                console.log(`Nome da tarefa pendente: ${consultas.titulo}`);
-            })
+                filtrarConsultaVeterinario.forEach(consulta => {
+                console.log(`Consulta do animal ${consulta.animal} (${consulta.especie}), tutor(a) ${consulta.tutor}, com o(a) veterinário(a) ${consulta.veterinario}. Procedimento: ${consulta.procedimento} - Valor: R$ ${consulta.valor}`);
+            });
             } else {
-                console.log("Nao tem nenhuma tarefa pendente");
+                console.log("Nao tem nenhum veterinario cadastrado");
+            }
+            break;
+
+        case 3:
+            const filtrarConsultaNaoRealizadas = consultas.filter(consulta => {
+                return consulta.realizada === false;
+            });
+
+            if (filtrarConsultaNaoRealizadas) {
+                filtrarConsultaNaoRealizadas.forEach(consulta => {
+                console.log(`Nome da consulta pendente: ${consulta.procedimento}, o responsavel pela consulta e o(a) ${consulta.veterinario}`);
+            });
+            } else {
+                console.log("Nao tem nenhuma consulta pendente");
             }
             break;
     }
