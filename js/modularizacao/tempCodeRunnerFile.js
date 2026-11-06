@@ -1,0 +1,1 @@
+import {somar, subtrair, multiplicar, dividir } from "./calculadora.js"
