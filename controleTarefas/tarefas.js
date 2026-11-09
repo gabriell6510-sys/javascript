@@ -1,12 +1,11 @@
 import { perguntarTexto, perguntarNumero } from "./entrada.js";
 import { question, questionInt } from "readline-sync";
 
-const tarefas = [];
+export const tarefas = [];
 
 export function cadastrarTarefa() {
     try {
         console.log("\n===== CADASTRO DE TAREFA =====");
-        let id;
         let tituloTarefa = perguntarTexto("Titulo da tarefa: ").trim();
         let descricao = perguntarTexto("Descricao: ").trim();
         let nomeResponsavel = perguntarTexto("Nome do responsavel: ").trim();
@@ -61,30 +60,31 @@ export function listarTarefas() {
     
 }
 
-export function buscarTarefaPorId(id) {
+export function buscarTarefaPorId(listaTarefas) {
     try {
-        console.log("===== BUSCANDO TAREFA PELO ID =====");
+        console.log("\n===== BUSCANDO TAREFA PELO ID =====");
 
-        let escolhaTarefa = questionInt("Qual tarefa voce quer escolher: ");
-
-        if (escolhaTarefa === "") {
-            throw new Error("O id nao pode ser vazio");
+        if (listaTarefas.length === 0) {
+            throw new Error("Não existem tarefas cadastradas.");
         }
 
-        let buscandoTarefa = tarefas.find(tarefa => {
-            return escolhaTarefa === tarefa.id;
-        })
+        let escolhaTarefa = questionInt("Qual tarefa voce quer escolher (ID): ");
 
-        if (buscandoTarefa) {
-                console.log("\nTarefa: ", buscandoTarefa.tarefa);
-        } 
+        let tarefaEncontrada = listaTarefas.find(tarefa => tarefa.id === escolhaTarefa);
+        
+        if (tarefaEncontrada) {
+            console.log("\n--- Tarefa Encontrada ---");
+            console.log("id: ", tarefaEncontrada.id);
+            console.log("titulo: ", tarefaEncontrada.titulo);
+            console.log("Descricao: ", tarefaEncontrada.descricao);
+            console.log("Nome do responsavel: ", tarefaEncontrada.nome);
+            console.log("Prioridade da tarefa: ", tarefaEncontrada.prioridade);
+            console.log("Status: ", tarefaEncontrada.status);
+        } else {
+            console.log("Nenhuma tarefa encontrada com esse ID.");
+        }
         
     } catch(erro) {
         console.log("Erro: ", erro.message);
-        
     }
-    
-        
-    
-    
 }

@@ -1,4 +1,4 @@
-import { cadastrarTarefa, listarTarefas, buscarTarefaPorId } from "./tarefas.js";
+import { cadastrarTarefa, listarTarefas, buscarTarefaPorId, tarefas } from "./tarefas.js";
 import {questionInt} from "readline-sync"
 while (true) {
     console.log("1 - Cadastrar tarefa");
@@ -28,7 +28,7 @@ while (true) {
                 break;
 
             case 3:
-                buscarTarefaPorId();
+                buscarTarefaPorId(tarefas);
                 break;
 
             case 4:
