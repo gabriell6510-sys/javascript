@@ -78,7 +78,7 @@ export function buscarTarefaPorId(id) {
         if (buscandoTarefa) {
                 console.log("\nTarefa: ", buscandoTarefa.tarefa);
         } 
-
+        
     } catch(erro) {
         console.log("Erro: ", erro.message);
         
