@@ -32,9 +32,9 @@ export function relatorioPrioridade() {
             throw new Error("Nao tem tarefa cadastrada.")
         }
 
-        let tarefasBaixas = tarefas.filter(tarefa => tarefa.prioridade === "baixa").length;
-        let tarefasMedias = tarefas.filter(tarefa => tarefa.prioridade === "media").length;
-        let tarefasAltas = tarefas.filter(tarefa => tarefa.prioridade === "alta").length;
+        let tarefasBaixas = tarefas.filter(tarefa => tarefa.prioridade === "Baixa").length;
+        let tarefasMedias = tarefas.filter(tarefa => tarefa.prioridade === "Media").length;
+        let tarefasAltas = tarefas.filter(tarefa => tarefa.prioridade === "Alta").length;
 
         console.log(`Total de tarefas com prioridade baixa: ${tarefasBaixas}`);
         console.log(`Total de tarefas com prioridade media: ${tarefasMedias}`);
