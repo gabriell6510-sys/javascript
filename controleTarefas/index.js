@@ -1,4 +1,5 @@
-import { cadastrarTarefa, listarTarefas, buscarTarefaPorId, tarefas } from "./tarefas.js";
+import { cadastrarTarefa, listarTarefas, buscarTarefaPorId, atualizarStatus, listarTarefasPorStatus , tarefas } from "./tarefas.js";
+import { relatorioGeral, relatorioPrioridade } from "./relatorios.js";
 import {questionInt} from "readline-sync"
 while (true) {
     console.log("1 - Cadastrar tarefa");
@@ -32,12 +33,20 @@ while (true) {
                 break;
 
             case 4:
+                atualizarStatus(tarefas);
+                break;
 
             case 5:
-            
-            case 6:
+                listarTarefasPorStatus(tarefas);
+                break;
 
+            case 6:
+                relatorioGeral(tarefas);
+                break;
+                
             case 7:
+                relatorioPrioridade(tarefas);
+                break;
 
             case 8:
 

@@ -1,4 +1,4 @@
-const media_aluno = () => {
+// const media_aluno = () => {
 //     console.log("===== Sistema de desempenho escolar =====")
 //     let nome_aluno = question("Digite o nome do aluno: ").trim();
 //     let nota1 = Number(question("Digite a 1a nota: "));
