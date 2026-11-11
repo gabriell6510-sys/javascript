@@ -48,11 +48,36 @@ export function relatorioPrioridade() {
 
 export function relatorioResponsaveis() {
     try {
-        throw new Error("Nao tem tarefa cadastrada.");
+        if (tarefas.length === 0) {
+            throw new Error("Nao tem tarefa cadastrada.");
+        }
+        
+        console.log("\n---- Titulo da tarefa e o seu responsavel");
+        
+        tarefas.forEach(tarefa => {
+            console.log(`O responsavel da tarefa, ${tarefa.titulo} e o ${tarefa.nome}`);
+        });
 
-        let nomeResponsavel = tarefas.filter(tarefa =>)
+        console.log("\n---- TAREFA POR PESSOA ----");
+        
+        let responsavelTarefa = question("Digite o nome da pessoa que voce quer visualizar suas tarefas: ").trim().toLowerCase();
+        
+        const atividadesResponsavel = tarefas.filter(tarefa => {
+            return tarefa.nome.toLowerCase() === responsavelTarefa;
+        });
+
+        // Correção 1: Verifica se o array contém elementos
+        if (atividadesResponsavel.length > 0) {
+            console.log(`\nTarefas encontradas para ${responsavelTarefa}:`);
+            // Correção 2: Usa 'atividadesResponsavel' em vez de 'tarefas'
+            atividadesResponsavel.forEach(tarefa => {
+                console.log(`- Tarefa: ${tarefa.titulo}`);
+            });
+        } else {
+            console.log("Nenhuma tarefa encontrada para esta pessoa.");
+        }
+        
     } catch(erro) {
         console.log("Erro: " + erro.message);
-        
     }
 }

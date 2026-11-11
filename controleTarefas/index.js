@@ -1,5 +1,5 @@
 import { cadastrarTarefa, listarTarefas, buscarTarefaPorId, atualizarStatus, listarTarefasPorStatus , tarefas } from "./tarefas.js";
-import { relatorioGeral, relatorioPrioridade } from "./relatorios.js";
+import { relatorioGeral, relatorioPrioridade, relatorioResponsaveis } from "./relatorios.js";
 import {questionInt} from "readline-sync"
 while (true) {
     console.log("1 - Cadastrar tarefa");
@@ -49,7 +49,9 @@ while (true) {
                 break;
 
             case 8:
-
+                relatorioResponsaveis(tarefas);
+                break;
+                
             default:
                 console.log("Informacao invalida! Digite novamente");
                 break;
