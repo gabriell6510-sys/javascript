@@ -20,27 +20,6 @@ const entregas = [
     }
 ]
 
-// function clienteEntrega(cliente, callback) {
-//     let indice = 0;
-    
-//     const entrega = setInterval(() => {
-//         entregas.filter(cliente => {
-//             console.log(`Entrega de ${cliente.cliente} concluida!`);
-//             console.log(`Processando entrega de ${cliente.cliente}...`);
-//         });
-
-//         if (entrega < entregas.length) {
-//             clearInterval(entrega)
-//             setTimeout(() => {
-//                 console.log("Resumo das entregas: ");
-//                 console.table(entregas)
-//             }, 1000)
-//         }
-//     },3000);
-// }
-
-// clienteEntrega()
-
 function processarEntrega(listaEntregas, callback) {
     let indice = 0;
 
