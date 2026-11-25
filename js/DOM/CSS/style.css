@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    padding: 40px;
+}
+
+.painel {
+    max-width: 500px;
+    margin: auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+}
+
+.aviso {
+    background: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.destaque {
+    background-color: #fde68a;
+    border-left: 5px solid #f59e0b;
+}
+
+.tema-escuro {
+    background-color: #0f172a;
+    color: white;
+}
+
+.tema-escuro .painel {
+    background-color: #1e293b;
+}
+
+.tema-escuro .aviso {
+    background-color: #334155;
+}
+
+.tema-escuro .aviso.destaque {
+    background-color: #66501b;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
