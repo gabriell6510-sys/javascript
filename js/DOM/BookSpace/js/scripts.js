@@ -1,6 +1,6 @@
-let livros = []
+let livros = [];
 
-const listaLivos = document.getElementById("listaLivros");
+const listarLivros = document.getElementById("listaLivros");
 const campoPesquisa = document.getElementById("campoPesquisa");
 const filtroCategoria = document.getElementById("filtroCategoria");
 
@@ -18,15 +18,35 @@ const body = document.querySelector("body");
 
 async function carregarLivros() {
     try {
-        const resposta = await fetch("livros.json");
+        const response = await fetch("./dados/livros.json");
 
-        if (!resposta.ok) {
-            throw new Error("Nao existe livro cadastrado no momento");
+        if (!response.ok) {
+            throw new Error("Erro HTTP:" + response.status);
+
+        } else {
+
+            livros = await response.json();
+
+            listarLivros.innerHTML = ''
+
+            livros.forEach(livro => {
+
+                listarLivros.innerHTML += `
+                    <div class="card ${listarLivros}">
+                    <div class="capa">📖</div>
+                    <h3>${livro.titulo}</h3>
+                    <p><strong>Autor:</strong> ${livro.autor}</p>
+                    <p><strong>Categoria:</strong> ${livro.categoria}</p>
+                    <p><strong>Ano:</strong> ${livro.ano}</p>
+                </div>
+            `
+            })
+            
+            
         }
-
-        livros = await resposta.json()
+        
     } catch(erro) {
-
+        mensagem.textContent = "Erro: " + erro.message;
     }
 }
 btnTema.addEventListener("click", () => {
@@ -34,10 +54,10 @@ btnTema.addEventListener("click", () => {
     document.body.classList.toggle("tema-escuro");
     
 });
-
-function cadastrarLivro() {
+carregarLivros()
+// function cadastrarLivro() {
     
-    const nomeLivro = titulo.value.trim();
-    const autorLivro = autor.value.trim();
-    const categoriaLivro = categoria.value.trim();
-}
+//     const nomeLivro = titulo.value.trim();
+//     const autorLivro = autor.value.trim();
+//     const categoriaLivro = categoria.value.trim();
+// }
