@@ -82,4 +82,3 @@ btnLimpar.addEventListener("click", limparPedido);
 //         mensagem.textContent = "Pedido calculado com sucesso!"
 //     }
 // });
-
